@@ -23,10 +23,17 @@ export const metadata: Metadata = {
   },
 };
 
+import { Providers } from './providers';
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <meta name="base:app_id" content="69d2b14a759b9a105ccd8305" />
+      </head>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
