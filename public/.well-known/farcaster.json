@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOiA4ODU5NzIsICJ0eXAiOiAiSldUIn0",
+    "payload": "eyJkb21haW4iOiAic3VwcmVtZS1qb3VybmV5LXdwNWc5eHY3NTY3Y3Y2d2ctMzAwMC5hcHAuZ2l0aHViLmRldiJ9",
+    "signature": "MHhlNDY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Compliment Bot",
+    "iconUrl": "https://farcaster.xyz/icon.png",
+    "homeUrl": "https://your-vercel-url.vercel.app",
+    "imageUrl": "https://your-vercel-url.vercel.app/og-image.png",
+    "buttonTitle": "Get a Compliment",
+    "splashImageUrl": "https://farcaster.xyz/splash.png",
+    "splashBackgroundColor": "#0052ff"
+  }
+}
