@@ -27,7 +27,6 @@ export default function Home() {
   const { data: hash, sendTransactionAsync, isPending, error: sendError } = useSendTransaction();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
-  // UPDATED: Using your provided receiving address
   const RECEIVER_ADDRESS = '0xd0793C144c7E09c3D7e0da7a8384c31D0577f838' as `0x${string}`;
 
   useEffect(() => {
@@ -43,7 +42,7 @@ export default function Home() {
 
   const handlePay = async () => {
     if (chainId !== 8453) {
-      switchChain({ chainId: 8453 });
+      switchChain?.({ chainId: 8453 });
       return;
     }
 
@@ -52,12 +51,10 @@ export default function Home() {
         await sendTransactionAsync({
           to: RECEIVER_ADDRESS,
           value: parseEther('0.000004'),
-          gas: BigInt(21000),
-          type: 'legacy', 
         });
       }
     } catch (e) {
-      console.error("Wallet Trigger Failed:", e);
+      console.error("Payment failed", e);
     }
   };
 
@@ -72,7 +69,7 @@ export default function Home() {
 
         {isConnected && !isConfirmed && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <p className="mb-6 text-blue-100 text-sm">
+            <p className="mb-6 text-blue-100 text-sm text-center">
               {chainId === 8453 ? "Ready! Send 1¢ for a compliment." : "Switch to Base to continue."}
             </p>
             
@@ -87,7 +84,7 @@ export default function Home() {
             {sendError && (
               <div className="mt-4 p-2 bg-red-900/30 rounded border border-red-500/50">
                 <p className="text-[10px] text-red-200 break-words font-mono uppercase">
-                  {sendError.name === 'UserRejectedRequestError' ? "Transaction Cancelled" : "Check Wallet / Balance"}
+                  {sendError.message.includes('rejected') ? "Transaction Cancelled" : "Error: Check Balance"}
                 </p>
               </div>
             )}
