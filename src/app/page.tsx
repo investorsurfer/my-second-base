@@ -7,7 +7,7 @@ import {
   useAccount, 
   useSwitchChain 
 } from 'wagmi';
-import { parseEther } from 'viem';
+import { parseEther, stringToHex } from 'viem';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import sdk from '@farcaster/frame-sdk';
 
@@ -27,9 +27,11 @@ export default function Home() {
   const { data: hash, sendTransactionAsync, isPending, error: sendError } = useSendTransaction();
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
+  // Your receiving address
   const RECEIVER_ADDRESS = '0xd0793C144c7E09c3D7e0da7a8384c31D0577f838' as `0x${string}`;
 
   useEffect(() => {
+    // Initialize Farcaster SDK
     sdk.actions.ready();
   }, []);
 
@@ -41,6 +43,7 @@ export default function Home() {
   }, [isConfirmed]);
 
   const handlePay = async () => {
+    // Step 1: Ensure user is on Base Mainnet (8453)
     if (chainId !== 8453) {
       switchChain?.({ chainId: 8453 });
       return;
@@ -51,6 +54,8 @@ export default function Home() {
         await sendTransactionAsync({
           to: RECEIVER_ADDRESS,
           value: parseEther('0.000004'),
+          // ATTRIBUTION: Encodes your builder code into the transaction data
+          data: stringToHex('bc_n98op1jy'),
         });
       }
     } catch (e) {
@@ -69,7 +74,7 @@ export default function Home() {
 
         {isConnected && !isConfirmed && (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <p className="mb-6 text-blue-100 text-sm text-center">
+            <p className="mb-6 text-blue-100 text-sm">
               {chainId === 8453 ? "Ready! Send 1¢ for a compliment." : "Switch to Base to continue."}
             </p>
             
@@ -78,13 +83,21 @@ export default function Home() {
               disabled={isPending || isConfirming}
               className="w-full bg-white text-[#0052ff] font-bold py-4 rounded-2xl hover:scale-105 transition-all shadow-lg disabled:opacity-50"
             >
-              {chainId !== 8453 ? "Switch to Base" : isPending ? "Confirm in Wallet..." : isConfirming ? "Processing..." : "Pay 1¢ for Compliment"}
+              {chainId !== 8453 
+                ? "Switch to Base" 
+                : isPending 
+                  ? "Confirm in Wallet..." 
+                  : isConfirming 
+                    ? "Processing..." 
+                    : "Pay 1¢ for Compliment"}
             </button>
             
             {sendError && (
               <div className="mt-4 p-2 bg-red-900/30 rounded border border-red-500/50">
                 <p className="text-[10px] text-red-200 break-words font-mono uppercase">
-                  {sendError.message.includes('rejected') ? "Transaction Cancelled" : "Error: Check Balance"}
+                  {sendError.message.includes('rejected') 
+                    ? "Transaction Cancelled" 
+                    : "Error: Check Balance"}
                 </p>
               </div>
             )}
@@ -96,7 +109,10 @@ export default function Home() {
             <div className="bg-white/10 p-6 rounded-xl mb-4 border border-white/20 text-xl font-bold italic">
               "{compliment}"
             </div>
-            <button onClick={() => window.location.reload()} className="text-xs underline opacity-50 hover:opacity-100">
+            <button 
+              onClick={() => window.location.reload()} 
+              className="text-xs underline opacity-50 hover:opacity-100"
+            >
               Get another?
             </button>
           </div>
