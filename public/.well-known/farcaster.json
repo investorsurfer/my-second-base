@@ -1,15 +1,15 @@
 {
   "accountAssociation": {
-    "header": "eyJmaWQiOiA4ODU5NzIsICJ0eXAiOiAiSldUIn0",
-    "payload": "eyJkb21haW4iOiAic3VwcmVtZS1qb3VybmV5LXdwNWc5eHY3NTY3Y3Y2d2ctMzAwMC5hcHAuZ2l0aHViLmRldiJ9",
-    "signature": "MHhlNDY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0YmY0"
+    "header": "eyJmaWQiOjE5MDg2NywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweGNlOWViRjNEOTc5RDRkNjMwQkVlN2E1YjU0OGE1ZDQ1Njc3OUMyYUQifQ",
+    "payload": "eyJkb21haW4iOiJteS1zZWNvbmQtYmFzZS52ZXJjZWwuYXBwIn0",
+    "signature": "yA2bapOZ7DSd2VZ7ttzt2SEPaJGjFGkt+LW7450Qr8Z9D/+xqS+hauAUdqvKVBXJ4FyS6dn3DAFIe4LACiBhOhw="
   },
   "frame": {
     "version": "1",
     "name": "Compliment Bot",
     "iconUrl": "https://farcaster.xyz/icon.png",
-    "homeUrl": "https://your-vercel-url.vercel.app",
-    "imageUrl": "https://your-vercel-url.vercel.app/og-image.png",
+    "homeUrl": "https://my-second-base.vercel.app",
+    "imageUrl": "https://my-second-base.vercel.app/og-image.png",
     "buttonTitle": "Get a Compliment",
     "splashImageUrl": "https://farcaster.xyz/splash.png",
     "splashBackgroundColor": "#0052ff"
