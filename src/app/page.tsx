@@ -28,7 +28,7 @@ export default function Home() {
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
   // Your receiving address
-  const RECEIVER_ADDRESS = '0xd0793C144c7E09c3D7e0da7a8384c31D0577f838' as `0x${string}`;
+  const RECEIVER_ADDRESS = '0x71590d752E0431232D797B3DB73c13EbE699Dede' as `0x${string}`;
 
   useEffect(() => {
     // Initialize Farcaster SDK
