@@ -7,7 +7,7 @@ import {
   useAccount, 
   useSwitchChain 
 } from 'wagmi';
-import { parseEther, stringToHex } from 'viem';
+import { parseEther } from 'viem';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import sdk from '@farcaster/frame-sdk';
 
@@ -54,8 +54,8 @@ export default function Home() {
         await sendTransactionAsync({
           to: RECEIVER_ADDRESS,
           value: parseEther('0.000004'),
-          // ATTRIBUTION: Encodes your builder code into the transaction data
-          data: stringToHex('bc_n98op1jy'),
+          // HARDCODED BUILDER HASH: Guaranteed attribution to bc_n98op1jy
+          data: '0x62635f6e39386f70316a790b0080218021802180218021802180218021' as `0x${string}`,
         });
       }
     } catch (e) {
